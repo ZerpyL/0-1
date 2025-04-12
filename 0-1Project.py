@@ -9,7 +9,8 @@ while True:
     print("********************************")
     print("Please Enter the following number below from the following menu:\n")
     print("1. PRINT all Authorized Vehicles")
-    print("2. Exit")
+    print("2. SEARCH for Authorized Vehicle")
+    print("3. Exit")
 
 # Ask the user to choose an option
     choice = input("Enter your choice: ")
@@ -19,11 +20,23 @@ while True:
         print("The AutoCountry sales manager has authorized the purchase and selling of the following vehicles:")
         for v in AllowedVehiclesList:
             print(v)
- # if user chooses 2 then exit the program           
+# if user chooses 2 then it searches for if vehicle is in the authorized vehicle list
     elif choice == "2":
+        search_vehicle = input ("Please enter the full Vehicle name: ")
+        
+        if search_vehicle in AllowedVehiclesList:
+            print(f"{search_vehicle} is an authorized vehicle")
+        else:
+            print(f"{search_vehicle} is not an authorized vehicle, if you received this in error please check the spelling and try again")
+
+
+        if search_vehicle in AllowedVehiclesList:
+            print
+ # if user chooses 3 then exit the program           
+    elif choice == "3":
         print("Thank you for using the AutoCountry Vehicle Finder, good-bye!")
         input("Press Enter to exit...")
         break
-# If the user enters anything else, let them know it's invalid
+# If the user enters anything else, let them know it's invalid and to choose again
     else:
-        print("Invalid choice.")
+        print("Invalid choice. Please enter 1, 2, or 3.")
