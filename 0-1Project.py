@@ -1,17 +1,18 @@
 
 # List of authorized vehicles
-AllowedVehiclesList = [ 'Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan' ]
-
+AllowedVehiclesList = [ 'Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan', 'Rivian R1T', 'Ram 1500' ]
 # Loop to always show the menu until the user chooses to exit
 while True:
     print("********************************")
-    print("AutoCountry Vehicle Finder v0.1")
+    print("AutoCountry Vehicle Finder v0.4")
     print("********************************")
     print("Please Enter the following number below from the following menu:\n")
     print("1. PRINT all Authorized Vehicles")
     print("2. SEARCH for Authorized Vehicle")
     print("3. ADD Authorized Vehicle")
-    print("4. Exit")
+    print("4. DELETE Authorized Vehicle")
+    print("5. Exit")
+    print("********************************")
 
 # Ask the user to choose an option
     choice = input("Enter your choice: ")
@@ -37,8 +38,21 @@ while True:
         AllowedVehiclesList.append(new_vehicle)
         print(f'You have added "{new_vehicle}" as an authorized vehicle')
     
-    # if user chooses 4 then exit the program           
+    # if user chooses 4 then remove an authorized vehicle
     elif choice == "4":
+        remove_vehicle = input("Please Enter the full Vehicle name you would like to REMOVE: ")
+        if remove_vehicle in AllowedVehiclesList:
+            confirmation = input(f'Are you sure you want to remove "{remove_vehicle}" from the Authorized Vehicles List? (yes/no): ')
+            if confirmation.lower() == 'yes':
+                AllowedVehiclesList.remove(remove_vehicle)
+                print(f'You have REMOVED "{remove_vehicle}" as an authorized vehicle')
+            else:
+                print("Vehicle removal canceled.")
+        else:
+            print(f'"{remove_vehicle}" was not found in the authorized vehicles list')
+    
+    # if user chooses 5 then exit the program           
+    elif choice == "5":
         print("Thank you for using the AutoCountry Vehicle Finder, good-bye!")
         input("Press Enter to exit...")
         break
